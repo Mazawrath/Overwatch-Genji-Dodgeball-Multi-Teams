@@ -124,6 +124,7 @@ rule "Player changes team":
             eventPlayer.teamNum = itt
             break
     teamPlayers[eventPlayer.teamNum] = teamPlayers[eventPlayer.teamNum].concat(eventPlayer)
+    eventPlayer.setscore(multiTeamScores[eventPlayer.teamNum])
     eventPlayer.playerSlot = eventPlayer.getSlot()
 
 
