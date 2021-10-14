@@ -148,6 +148,7 @@ globalvar itt2 87
 globalvar invisibleBall 88
 globalvar invisiblePlayers 89
 globalvar teamsAlive 90
+globalvar multiTeamScores 91
 
 
 #Player variables
@@ -1191,7 +1192,7 @@ rule "Check for last player surviving - MULTI":
             if RULE_CONDITION:
                 goto RULE_START
     isInFinalDuel = false
-    [player for player in getAllPlayers() if player.getCurrentHero() != ballHero and player.teamNum == getLivingPlayers(Team.ALL)[0].teamNum].addToScore(1)
+    multiTeamScores[getLivingPlayers(Team.ALL)[0].teamNum] += 1
     wait(0.25)
     if (getMatchTime() == 0 or tieBreakerActive) and gameEndEnabled:
         #If there is alredy a tiebreaker, then the tiebreaker has ended.
