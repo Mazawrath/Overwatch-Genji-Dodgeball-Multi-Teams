@@ -1345,18 +1345,6 @@ rule "Team 2 Last Surviving":
     chase(getAllPlayers().bouncePadCooldown, 0, rate=1, ChaseReeval.NONE)
 
 
-rule "Player check":
-    @Event eachPlayer
-    @Hero all
-    @Condition eventPlayer.isAlive() == true
-    @Condition "{0}".format(eventPlayer) == "daboss"
-    
-    kill(eventPlayer, null)
-    wait(1)
-    if RULE_CONDITION:
-        goto RULE_START
-
-
 rule "All players dead failsafe":
     @Condition getNumberOfLivingPlayers(Team.ALL) == 0
     @Condition isGameInProgress() == true
