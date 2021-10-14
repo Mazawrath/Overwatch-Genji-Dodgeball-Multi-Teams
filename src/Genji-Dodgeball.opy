@@ -1200,9 +1200,9 @@ rule "Check for last player surviving - MULTI":
         #if tieBreakerActive:
         #break
         #__end__()
-        highestScore = sorted(getAllPlayers(), lambda player: player.getScore()).last().getScore()
+        highestScore = sorted(multiTeamScores).last()
         #Check if there is more then 1 person with the highest score
-        if len([player for player in getAllPlayers() if player.getScore() == highestScore]) > 1:
+        if len([score for score in multiTeamScores if score == highestScore]) > 1:
             #There is more then 1, activate tie breaker
             tieBreakerActive = true
         else:
@@ -1215,9 +1215,9 @@ rule "Check for last player surviving - MULTI":
         getDeadPlayers(Team.ALL).resurrect()
     else:
         #Kill anyone alive who doesn't have the highest score.
-        kill([player for player in getLivingPlayers(Team.ALL) if player.getScore() != highestScore], null)
+        kill([player for player in getLivingPlayers(Team.ALL) if multiTeamScores[player.teamNum] != highestScore], null)
         #During tiebreaker, only revive the people who have the same score as the highest score.
-        ([player for player in getDeadPlayers(Team.ALL) if player.getScore() == highestScore]).resurrect()
+        ([player for player in getLivingPlayers(Team.ALL) if multiTeamScores[player.teamNum] == highestScore]).resurrect()
         wait(0.25)
         targetedPlayer = -1
         bigMessage(getAllPlayers(), "Tiebreaker!")
