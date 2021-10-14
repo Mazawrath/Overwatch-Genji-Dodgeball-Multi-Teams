@@ -330,6 +330,26 @@ rule "Check for <2 players":
     pauseMatchTime()
 
 
+rule "Check for <2 players - MULTI":
+    @Condition isGameInProgress() == true
+    @Condition len([team for team in teamPlayers if len(team)]) == 1
+    @Condition getCurrentGamemode() == Gamemode.FFA
+    @Condition multiTeam
+    
+    isInFinalDuel = false
+    hudHeader(getAllPlayers(), "Waiting for more players", HudPosition.TOP, 0, Color.WHITE, HudReeval.VISIBILITY, SpecVisibility.DEFAULT)
+    waitingForPlayersHUD = getLastCreatedText()
+    isEnoughPlayersToStart = false
+    stopChasingVariable(ballSpawnCountdown)
+    if roundInProgress == false:
+        goto lbl_0
+    ballDeleteRequested = true
+    lbl_0:
+    roundInProgress = false
+    ballPlayerMock = false
+    pauseMatchTime()
+
+
 rule "Check for <2 players - TEAMS":
     @Condition isGameInProgress() == true
     #@Condition getNumberOfHeroes(playerHero, Team.ALL) == 1
@@ -353,6 +373,23 @@ rule "Wait for more players":
     @Condition getNumberOfHeroes(playerHero, Team.ALL) > 1
     @Condition isEnoughPlayersToStart == false
     @Condition getCurrentGamemode() == Gamemode.FFA
+    
+    destroyHudText(waitingForPlayersHUD)
+    bigMessage(getAllPlayers(), "Starting game in 5 seconds!")
+    wait(5.5)
+    if getNumberOfHeroes(playerHero, Team.ALL) < 2:
+        return
+    unpauseMatchTime()
+    isEnoughPlayersToStart = true
+    targetedPlayer = -1
+    previousTargetedPlayer = -1
+
+
+rule "Wait for more players - MULTI":
+    @Condition len([team for team in teamPlayers if len(team)]) > 1
+    @Condition isEnoughPlayersToStart == false
+    @Condition getCurrentGamemode() == Gamemode.FFA
+    @Condition multiTeam
     
     destroyHudText(waitingForPlayersHUD)
     bigMessage(getAllPlayers(), "Starting game in 5 seconds!")
