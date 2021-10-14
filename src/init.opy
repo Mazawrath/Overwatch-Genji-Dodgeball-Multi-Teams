@@ -223,19 +223,19 @@ rule "Create global HUD elements":
             hudSubtext(getAllPlayers(), "Hold secondary fire while deflecting to pass the ball to another teammate!", HudPosition.RIGHT, 0, Color.WHITE, HudReeval.VISIBILITY, SpecVisibility.DEFAULT)
         elif getCurrentGamemode() == Gamemode.FFA:
             hudSubtext(getAllPlayers(), "Hold secondary fire while deflecting to self pass the ball!", HudPosition.RIGHT, 0, Color.WHITE, HudReeval.VISIBILITY, SpecVisibility.DEFAULT)
-    if multiTeam[0]:
+    if maxTeamSlot[0]:
         hudSubtext(getAllPlayers(), "Team {0}: {1}".format(1, multiTeamScores[0]), HudPosition.RIGHT, 1, Color.LIME_GREEN, HudReeval.VISIBILITY_AND_STRING, SpecVisibility.ALWAYS)
-    if multiTeam[1]:
+    if maxTeamSlot[1]:
         hudSubtext(getAllPlayers(), "Team {0}: {1}".format(2, multiTeamScores[1]), HudPosition.RIGHT, 1, Color.TURQUOISE, HudReeval.VISIBILITY_AND_STRING, SpecVisibility.ALWAYS)
-    if multiTeam[2]:
+    if maxTeamSlot[2]:
         hudSubtext(getAllPlayers(), "Team {0}: {1}".format(3, multiTeamScores[2]), HudPosition.RIGHT, 1, Color.YELLOW, HudReeval.VISIBILITY_AND_STRING, SpecVisibility.ALWAYS)
-    if multiTeam[3]:
+    if maxTeamSlot[3]:
         hudSubtext(getAllPlayers(), "Team {0}: {1}".format(4, multiTeamScores[3]), HudPosition.RIGHT, 1, Color.ORANGE, HudReeval.VISIBILITY_AND_STRING, SpecVisibility.ALWAYS)
-    if multiTeam[4]:
+    if maxTeamSlot[4]:
         hudSubtext(getAllPlayers(), "Team {0}: {1}".format(5, multiTeamScores[4]), HudPosition.RIGHT, 1, Color.VIOLET, HudReeval.VISIBILITY_AND_STRING, SpecVisibility.ALWAYS)
-    if multiTeam[5]:
+    if maxTeamSlot[5]:
         hudSubtext(getAllPlayers(), "Team {0}: {1}".format(6, multiTeamScores[5]), HudPosition.RIGHT, 1, Color.WHITE, HudReeval.VISIBILITY_AND_STRING, SpecVisibility.ALWAYS)
-    if multiTeam[6]:
+    if maxTeamSlot[6]:
         hudSubtext(getAllPlayers(), "Team {0}: {1}".format(7, multiTeamScores[6]), HudPosition.RIGHT, 1, Color.GREEN, HudReeval.VISIBILITY_AND_STRING, SpecVisibility.ALWAYS)
 
 
