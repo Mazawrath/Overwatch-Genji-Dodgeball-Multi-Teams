@@ -315,6 +315,7 @@ rule "Check for <2 players":
     @Condition isGameInProgress() == true
     @Condition getNumberOfHeroes(playerHero, Team.ALL) == 1
     @Condition getCurrentGamemode() == Gamemode.FFA
+    @Condition not multiTeam
     
     isInFinalDuel = false
     hudHeader(getAllPlayers(), "Waiting for more players", HudPosition.TOP, 0, Color.WHITE, HudReeval.VISIBILITY, SpecVisibility.DEFAULT)
@@ -373,6 +374,7 @@ rule "Wait for more players":
     @Condition getNumberOfHeroes(playerHero, Team.ALL) > 1
     @Condition isEnoughPlayersToStart == false
     @Condition getCurrentGamemode() == Gamemode.FFA
+    @Condition not multiTeam
     
     destroyHudText(waitingForPlayersHUD)
     bigMessage(getAllPlayers(), "Starting game in 5 seconds!")
