@@ -274,6 +274,7 @@ rule "Set Blizz World center (fun fact: you can't use the name of the company wh
 
 
 rule "// INITIALIZATION":
+    @Disabled
 
 
 #!include "./init.opy"
@@ -421,6 +422,7 @@ rule "Wait for more players - TEAMS":
 
 
 rule "// GAME RULES":
+    @Disabled
 
 
 rule "Player joins game":
@@ -787,6 +789,7 @@ rule "secondary = deflect":
 
 
 rule "// ACTIVE GAME":
+    @Disabled
 
 
 rule "Start round":
