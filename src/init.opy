@@ -144,7 +144,7 @@ rule "Draw outlines":
                 eventPlayer.playerOutlineArr[itt].startForcingOutlineFor(eventPlayer, true, Color.LIME_GREEN, OutlineVisibility.DEFAULT)
                 break
             case 1:
-                eventPlayer.playerOutlineArr[itt].startForcingOutlineFor(eventPlayer, true, Color.TURQUOISE, OutlineVisibility.DEFAULT)
+                eventPlayer.playerOutlineArr[itt].startForcingOutlineFor(eventPlayer, true, Color.RED, OutlineVisibility.DEFAULT)
                 break
             case 2:
                 eventPlayer.playerOutlineArr[itt].startForcingOutlineFor(eventPlayer, true, Color.YELLOW, OutlineVisibility.DEFAULT)
@@ -156,13 +156,8 @@ rule "Draw outlines":
                 eventPlayer.playerOutlineArr[itt].startForcingOutlineFor(eventPlayer, true, Color.VIOLET, OutlineVisibility.DEFAULT)
                 break
             case 5:
-                eventPlayer.playerOutlineArr[itt].startForcingOutlineFor(eventPlayer, true, Color.WHITE, OutlineVisibility.DEFAULT)
-                break
-            case 6:
                 eventPlayer.playerOutlineArr[itt].startForcingOutlineFor(eventPlayer, true, Color.GREEN, OutlineVisibility.DEFAULT)
                 break
-            default:
-                eventPlayer.playerOutlineArr[itt].startForcingOutlineFor(eventPlayer, true, Color.TEAM_2, OutlineVisibility.DEFAULT)
     # Okay I gotta do this super weird but hopefully this should only loop if someone joins or switches a team. Yeah it's pretty inefficent, but what are you going to do about it? Fix this? pfft, nobody even reads this code! Except you that is...okay please do fix it please i don't know how much longer i can do this
     eventPlayer.playerOutlineArr = teamPlayers
     # so apparently Overwatch has a comment character limit that OverPy doesn't care about so if you want to read the rest of that you need to go to my GitHub repository. Go do that and fork the game
@@ -224,12 +219,11 @@ rule "Create global HUD elements":
         elif getCurrentGamemode() == Gamemode.FFA:
             hudSubtext(getAllPlayers(), "Hold secondary fire while deflecting to self pass the ball!", HudPosition.RIGHT, 0, Color.WHITE, HudReeval.VISIBILITY, SpecVisibility.DEFAULT)
     hudSubtext([getAllPlayers() if teamPlayers[0] else null], "Team {0}: {1}".format(1, multiTeamScores[0]), HudPosition.RIGHT, -7, Color.LIME_GREEN, HudReeval.VISIBILITY_AND_STRING, SpecVisibility.ALWAYS)
-    hudSubtext([getAllPlayers() if teamPlayers[1] else null], "Team {0}: {1}".format(2, multiTeamScores[1]), HudPosition.RIGHT, -6, Color.TURQUOISE, HudReeval.VISIBILITY_AND_STRING, SpecVisibility.ALWAYS)
+    hudSubtext([getAllPlayers() if teamPlayers[1] else null], "Team {0}: {1}".format(2, multiTeamScores[1]), HudPosition.RIGHT, -6, Color.RED, HudReeval.VISIBILITY_AND_STRING, SpecVisibility.ALWAYS)
     hudSubtext([getAllPlayers() if teamPlayers[2] else null], "Team {0}: {1}".format(3, multiTeamScores[2]), HudPosition.RIGHT, -5, Color.YELLOW, HudReeval.VISIBILITY_AND_STRING, SpecVisibility.ALWAYS)
     hudSubtext([getAllPlayers() if teamPlayers[3] else null], "Team {0}: {1}".format(4, multiTeamScores[3]), HudPosition.RIGHT, -4, Color.ORANGE, HudReeval.VISIBILITY_AND_STRING, SpecVisibility.ALWAYS)
     hudSubtext([getAllPlayers() if teamPlayers[4] else null], "Team {0}: {1}".format(5, multiTeamScores[4]), HudPosition.RIGHT, -3, Color.VIOLET, HudReeval.VISIBILITY_AND_STRING, SpecVisibility.ALWAYS)
-    hudSubtext([getAllPlayers() if teamPlayers[5] else null], "Team {0}: {1}".format(6, multiTeamScores[5]), HudPosition.RIGHT, -2, Color.WHITE, HudReeval.VISIBILITY_AND_STRING, SpecVisibility.ALWAYS)
-    hudSubtext([getAllPlayers() if teamPlayers[6] else null], "Team {0}: {1}".format(7, multiTeamScores[6]), HudPosition.RIGHT, -1, Color.GREEN, HudReeval.VISIBILITY_AND_STRING, SpecVisibility.ALWAYS)
+    hudSubtext([getAllPlayers() if teamPlayers[5] else null], "Team {0}: {1}".format(6, multiTeamScores[5]), HudPosition.RIGHT, -2, Color.GREEN, HudReeval.VISIBILITY_AND_STRING, SpecVisibility.ALWAYS)
 
 
 rule "Create player HUD elements":
