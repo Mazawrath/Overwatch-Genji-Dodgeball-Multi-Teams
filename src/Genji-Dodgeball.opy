@@ -1193,6 +1193,7 @@ rule "Check for last player surviving - MULTI":
                 goto RULE_START
     isInFinalDuel = false
     multiTeamScores[getLivingPlayers(Team.ALL)[0].teamNum] += 1
+    [player for player in getAllPlayers() if player.getCurrentHero() != ballHero and player.teamNum == getLivingPlayers(Team.ALL)[0].teamNum].setScore(multiTeamScores[getLivingPlayers(Team.ALL)[0].teamNum])
     wait(0.25)
     if (getMatchTime() == 0 or tieBreakerActive) and gameEndEnabled:
         #If there is alredy a tiebreaker, then the tiebreaker has ended.
