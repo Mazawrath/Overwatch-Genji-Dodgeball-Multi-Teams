@@ -4,7 +4,7 @@
 
 Genji Dodgeball is a minigame inspired by the TF2 game pyro dodgeball.
 When the ball is red it is targeting you! Use your deflect to target someone else. Look at the person you want to target next while deflecting. Use bouncepads to get extra air and style points.  
-This repository is exclusively for hosting multi-teams, a mode where there can be up to 6 teams against eachother. For the main game the repository can be found [here.](https://github.com/Mazawrath/Overwatch-Genji-Dodgeball)
+This repository is exclusively for hosting multi-teams, a mode where up to 6 teams can play against each other. For the main game the repository can be found [here.](https://github.com/Mazawrath/Overwatch-Genji-Dodgeball)
 
 ## How to compile  
 Any file with a `.opy` ending is a file format compatable with OverPy, a high-level language for the Overwatch Workshop with support for compilation and decompilation.  
