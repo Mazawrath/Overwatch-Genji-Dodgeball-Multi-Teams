@@ -2,8 +2,8 @@
 
 settings {
     "main": {
-        "modeName": "Genji Dodgeball v7.6.0",
-        "description": "Genji Dodgeball v7.6.0. Developed by u/Mazawath. Numerous updates by u/FearlessKat, u/Blink, u/TheRedstoneBlaze, and ELIMINATED#1572. Deflect the ball when it is red to target someone else! Use jump pads to get air!"
+        "modeName": "Genji Dodgeball v7.6.0M",
+        "description": "Genji Dodgeball v7.6.0M Multi Teams. Developed by u/Mazawath. Numerous updates by u/FearlessKat, u/Blink, u/TheRedstoneBlaze, and ELIMINATED#1572. Deflect the ball when it is red to target someone else! Use jump pads to get air!"
     },
     "lobby": {
         "allowPlayersInQueue": true,
@@ -309,7 +309,7 @@ rule "Disable Scoreboard":
 rule "// Not enough players testing":
     if not watermarkEnabled:
         goto lbl_0
-    hudSubheader(getAllPlayers(), "Original by {0}. Version 7.6.0".format(name), HudPosition.LEFT, -1000, Color.AQUA, HudReeval.VISIBILITY, SpecVisibility.ALWAYS)
+    hudSubheader(getAllPlayers(), "Original by {0}. Version 7.6.0M".format(name), HudPosition.LEFT, -1000, Color.AQUA, HudReeval.VISIBILITY, SpecVisibility.ALWAYS)
     lbl_0:
 
 
