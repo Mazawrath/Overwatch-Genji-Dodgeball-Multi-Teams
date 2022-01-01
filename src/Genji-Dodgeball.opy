@@ -149,6 +149,7 @@ globalvar invisibleBall 88
 globalvar invisiblePlayers 89
 globalvar teamsAlive 90
 globalvar multiTeamScores 91
+globalvar teamKillPlayer 92
 
 
 #Player variables
@@ -997,6 +998,10 @@ def DeflectFailed():
     previousTargetedPlayer.currentUltPercent += 15
     if ballHero and previousTargetedPlayer == -1:
         previousTargetedPlayer = ballPlayer
+    if previousTargetedPlayer.teamNum == targetedPlayer.teamNum and previousTargetedPlayer and previousTargetedPlayer != targetedPlayer and previousTargetedPlayer != -1:
+        teamKillPlayer = previousTargetedPlayer
+        smallMessage(getAllPlayers(), "{0} has betrayed {1}!".format(teamKillPlayer, targetedPlayer))
+        previousTargetedPlayer = -1
     kill(targetedPlayer, previousTargetedPlayer)
     if ballHero and not ballPlayer.hasStatusEffect(Status.FROZEN):
         ballPlayer.stopFacing()
