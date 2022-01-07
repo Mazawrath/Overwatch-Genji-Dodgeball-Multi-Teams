@@ -150,6 +150,7 @@ globalvar invisiblePlayers 89
 globalvar teamsAlive 90
 globalvar multiTeamScores 91
 globalvar teamKillPlayer 92
+globalvar enemySymbols 93
 
 
 #Player variables
@@ -213,6 +214,7 @@ rule "// SETTINGS":
     #Currently, there is an issue where the server will end, based on how many players there are. If there are less it will take longer to crash. But it WILL crash. This rule simply lets there be a "winner" at the end VS crashing in the middle of Final Duel.
     gameEndEnabled = createWorkshopSetting(bool, "Teams Settings", "Allow Match to End At Time", false, 2)
     watermarkEnabled = createWorkshopSetting(bool, "Visual Settings", "Enable Watermark", true, 0)
+    enemySymbols = createWorkshopSetting(bool, "Visual Settings", "Enemy Symbols", false, 1)
     cooldownDashingEnabled = true
     redGreenColorblindMode = createWorkshopSetting(bool, "Visual Settings", "Red/Green Colorblind Mode", false, 2)
     finalDuelNuke = createWorkshopSetting(bool, "Visual Settings", "Final Duel Explosion", true, 3)

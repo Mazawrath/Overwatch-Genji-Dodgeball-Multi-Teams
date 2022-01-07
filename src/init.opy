@@ -139,7 +139,7 @@ rule "Draw outlines":
         # Nice variable naming. I know. It's amazing. You wonder how I have a full time developer position? No idea, honestly ¯\_(ツ)_/¯
         for itt2 in range(0, len(teamPlayers[eventPlayer.teamNum]), 1):
             teamPlayers[eventPlayer.teamNum][itt].startForcingOutlineFor(teamPlayers[eventPlayer.teamNum][itt2], true, Color.SKY_BLUE, OutlineVisibility.DEFAULT)
-    createIcon([player for player in teamPlayers[eventPlayer.teamNum] if eventPlayer.isAlive() and player != eventPlayer], updateEveryTick(eventPlayer.getEyePosition()), Icon.DIAMOND, IconReeval.VISIBILITY_AND_POSITION, Color.LIME_GREEN, false)
+    createIcon([player for player in teamPlayers[eventPlayer.teamNum] if eventPlayer.isAlive() and player != eventPlayer], updateEveryTick(eventPlayer.getEyePosition()), Icon.DIAMOND, IconReeval.VISIBILITY_AND_POSITION, Color.SKY_BLUE, false)
     eventPlayer.playerOutlineArr =  [player for player in getAllPlayers() if player.teamNum != eventPlayer.teamNum]
     for itt in range (0, len(eventPlayer.playerOutlineArr), 1):
         switch eventPlayer.playerOutlineArr[itt].teamNum:
@@ -160,6 +160,27 @@ rule "Draw outlines":
                 break
             case 5:
                 eventPlayer.playerOutlineArr[itt].startForcingOutlineFor(eventPlayer, true, Color.GREEN, OutlineVisibility.DEFAULT)
+                break
+
+    if enemySymbols:
+        switch eventPlayer.teamNum:
+            case 0:
+                createIcon([player for player in getAllPlayers() if eventPlayer.isAlive() and player != eventPlayer and eventPlayer.teamNum != player.teamNum], updateEveryTick(eventPlayer.getEyePosition()), Icon.BOLT, IconReeval.VISIBILITY_AND_POSITION, Color.LIME_GREEN, false)
+                break
+            case 1:
+                createIcon([player for player in getAllPlayers() if eventPlayer.isAlive() and player != eventPlayer and eventPlayer.teamNum != player.teamNum], updateEveryTick(eventPlayer.getEyePosition()), Icon.CLUB, IconReeval.VISIBILITY_AND_POSITION, Color.RED, false)
+                break
+            case 2:
+                createIcon([player for player in getAllPlayers() if eventPlayer.isAlive() and player != eventPlayer and eventPlayer.teamNum != player.teamNum], updateEveryTick(eventPlayer.getEyePosition()), Icon.RADIOACTIVE, IconReeval.VISIBILITY_AND_POSITION, Color.YELLOW, false)
+                break
+            case 3:
+                createIcon([player for player in getAllPlayers() if eventPlayer.isAlive() and player != eventPlayer and eventPlayer.teamNum != player.teamNum], updateEveryTick(eventPlayer.getEyePosition()), Icon.FIRE, IconReeval.VISIBILITY_AND_POSITION, Color.ORANGE, false)
+                break
+            case 4:
+                createIcon([player for player in getAllPlayers() if eventPlayer.isAlive() and player != eventPlayer and eventPlayer.teamNum != player.teamNum], updateEveryTick(eventPlayer.getEyePosition()), Icon.EYE, IconReeval.VISIBILITY_AND_POSITION, Color.VIOLET, false)
+                break
+            case 5:
+                createIcon([player for player in getAllPlayers() if eventPlayer.isAlive() and player != eventPlayer and eventPlayer.teamNum != player.teamNum], updateEveryTick(eventPlayer.getEyePosition()), Icon.RECYCLE, IconReeval.VISIBILITY_AND_POSITION, Color.GREEN, false)
                 break
     # Okay I gotta do this super weird but hopefully this should only loop if someone joins or switches a team. Yeah it's pretty inefficent, but what are you going to do about it? Fix this? pfft, nobody even reads this code! Except you that is...okay please do fix it please i don't know how much longer i can do this
     eventPlayer.playerOutlineArr = teamPlayers
